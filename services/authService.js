@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { db, jwtSecret } from '../firebase.js';
 
@@ -22,7 +22,7 @@ const authentifier = async (email, motDePasse) => {
         throw new Error('Données de mot de passe manquantes ou incorrectes');
     }
 
-    const isMatch = await bcrypt.compare(motDePasse, utilisateur.motDePasse);
+    const isMatch = await bcryptjs.compare(motDePasse, utilisateur.motDePasse);
     if (!isMatch) {
         throw new Error('Mot de passe incorrect.');
     }

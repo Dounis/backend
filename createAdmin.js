@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { db } from './firebase.js'; // Assurez-vous que le chemin d'importation est correct
 
 async function createAdmin() {

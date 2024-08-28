@@ -1,12 +1,11 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { db } from '../firebase.js';
-
 export const creerCompte = async (utilisateurData) => {
     if (!utilisateurData.motDePasse) {
         throw new Error('Mot de passe non fourni');
     }
     try {
-        const hashedPassword = await bcrypt.hash(utilisateurData.motDePasse, 10);
+        const hashedPassword = await bcryptjs.hash(utilisateurData.motDePasse, 10);
         utilisateurData.motDePasse = hashedPassword;
 
         const userRef = db.collection('Utilisateurs').doc();
